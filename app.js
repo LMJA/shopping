@@ -25,7 +25,7 @@ const app=express();
 app.use(favicon(__basename+ '/web/public/images/icons/img_79.ico'));
 
 
-let port =process.env.PORT || CONFIG.server.port;//在服务器上是用80端口，否则使用本地开发地址
+let port =process.env.PORT || config.server.port;//在服务器上是用80端口，否则使用本地开发地址
 
 
 //设置静态资源路径
