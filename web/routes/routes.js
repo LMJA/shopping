@@ -12,7 +12,6 @@ angular.module('app')
 			templateUrl:'/templates/main/main.html'
 
 		})
-
 		
 		
 		.state('main.home',{
@@ -27,7 +26,14 @@ angular.module('app')
 
 		.state('register',{
 			url:'/register',
-			templateUrl:'/templates/register/register.html'
+			templateUrl:'/templates/register/register.html',
+			cache: false,
+			controller:'registerController',
+			resolve: {
+				des: ['$ocLazyLoad', function ($ocLazyLoad) {
+					return $ocLazyLoad.load('register');
+				}]
+			}
 		})
 		
 		

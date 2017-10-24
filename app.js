@@ -3,15 +3,30 @@
 // 全局变量,获取当前模块文件所在的位置
 global.__basename=__dirname;
 
+global.config=require(__basename + '/config/config.js');
+
 //引入模块
 const express=require('express');
 
 const ejs=require('ejs');
 
+const favicon=require('serve-favicon');
+
+//专门处理post请求方式
+const bodyParser=require('body-parser');
+
 const routes=require(__basename+'/routes/routes.js');
 
 //实例化
 const app=express();
+
+//请求.ico文件
+//
+app.use(favicon(__basename+ '/web/public/images/icons/img_79.ico'));
+
+
+let port =process.env.PORT || CONFIG.server.port;//在服务器上是用80端口，否则使用本地开发地址
+
 
 //设置静态资源路径
 //
@@ -26,6 +41,9 @@ app.set('view engine','html');
 
 //ejs.__express回调函数
 app.engine('.html',ejs.__express);
+
+//json化post请求数据
+app.use(bodyParser.json());
 
 
 //加载所有路由
@@ -48,8 +66,8 @@ app.use((err,req,res)=>{
 
 
 //设置监听窗口
-app.listen(8000,()=>{
+app.listen(port,()=>{
 	//添加一个回调函数，可加可不加
-	console.log('服务器运行于127.0.0.1：8000端口')
+	console.log(`服务器运行于${config.server.host}:${port}`)
 
 });
