@@ -15,10 +15,16 @@
     "shopping",
     "nodejs"
   ],
-  "author": "",
+  "author": "LMJ",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/LMJA/shopping/issues"
   },
-  "homepage": "https://github.com/LMJA/shopping#readme"
+  "homepage": "https://github.com/LMJA/shopping#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "ejs": "^2.5.7"
+  }
 }
